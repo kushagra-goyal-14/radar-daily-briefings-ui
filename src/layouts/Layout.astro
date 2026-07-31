@@ -1,0 +1,130 @@
+---
+import '../styles/main.scss';
+import PWAInstallBanner from '../components/PWAInstallBanner.astro';
+import { SITE_METADATA } from '../config';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+const {
+	title = `${SITE_METADATA.name} | ${SITE_METADATA.tagline}`,
+	description = SITE_METADATA.description,
+	image,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImageURL = image
+	? new URL(image, Astro.site ?? Astro.url.origin).toString()
+	: null;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<link rel="alternate" type="application/rss+xml" title={SITE_METADATA.name} href="/rss.xml" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- PWA Metadata and iOS support -->
+		<link rel="manifest" href="/manifest.webmanifest" />
+		<meta name="theme-color" content="#111111" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={SITE_METADATA.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		{socialImageURL && <meta property="og:image" content={socialImageURL} />}
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{socialImageURL && <meta name="twitter:image" content={socialImageURL} />}
+		{socialImageURL && <meta name="twitter:image:alt" content={title} />}
+		<script is:inline>
+			(function () {
+				const savedTheme = localStorage.getItem('theme');
+				const theme = savedTheme || 'light';
+				document.documentElement.dataset.theme = theme;
+
+				window.addEventListener('DOMContentLoaded', () => {
+					const themeToggle = document.getElementById('theme-toggle');
+					if (themeToggle) {
+						themeToggle.addEventListener('click', () => {
+							const current = document.documentElement.dataset.theme || 'light';
+							const next = current === 'dark' ? 'light' : 'dark';
+							document.documentElement.dataset.theme = next;
+							localStorage.setItem('theme', next);
+							window.dispatchEvent(new CustomEvent('theme-changed', { detail: next }));
+						});
+					}
+				});
+			})();
+		</script>
+		<script is:inline>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.getRegistrations().then((registrations) => {
+						// 1. Proactively unregister any legacy or versioned service workers
+						for (const reg of registrations) {
+							if (reg.active && (reg.active.scriptURL.includes('?v=') || !reg.active.scriptURL.endsWith('/sw.js'))) {
+								reg.unregister().then(() => {
+									console.log('Successfully removed old versioned service worker:', reg.active.scriptURL);
+								});
+							}
+						}
+						
+						// 2. Register the stable, clean, non-versioned service worker
+						navigator.serviceWorker.register('/sw.js')
+							.then((reg) => {
+								console.log('PWA ServiceWorker Active:', reg.scope);
+								if (reg) {
+									reg.update(); // Force immediate update check
+								}
+							})
+							.catch((err) => console.warn('PWA ServiceWorker Failed:', err));
+					});
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<slot />
+		<PWAInstallBanner />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>

@@ -1,0 +1,500 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThemeToggleButton from './ThemeToggleButton.astro';
+import Footer from './Footer.astro';
+import { SITE_METADATA } from '../config';
+
+const SOURCE_LABEL: Record<string, string> = {
+	arxiv: 'arXiv',
+	hn: 'HN',
+	github: 'GH',
+	'wordpress-news': 'WP News',
+	'wordpress-developer-blog': 'WP Dev',
+	'make-wordpress-core': 'WP Core',
+	'make-wordpress-accessibility': 'WP A11y',
+	'make-wordpress-performance': 'WP Perf',
+	'make-wordpress-security': 'WP Security',
+	'gutenberg-times': 'Gutenberg',
+	'hugging-face-blog': 'HF',
+	lobsters: 'Lobsters',
+};
+
+interface StoryProps {
+	slug: string;
+	title: string;
+	source: string;
+	url: string;
+	why_read?: string;
+	authors: string[];
+	image?: string;
+	interest_score?: number;
+	comments?: string;
+	hn_id?: string;
+	section?: string;
+	depth_score?: number;
+	novelty_score?: number;
+	utility_score?: number;
+	Content: any;
+}
+
+interface Props {
+	day: string;
+	stories: StoryProps[];
+	issue: number;
+	totalIssues: number;
+	prevDay: string | null;
+	nextDay: string | null;
+	allDays: { day: string; label: string }[];
+	isHomepage?: boolean;
+}
+
+const { day, stories, issue, totalIssues, prevDay, nextDay, allDays, isHomepage = false } = Astro.props;
+
+const images = import.meta.glob('/src/content/radar-stories/**/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+
+function resolveImage(story: StoryProps, day: string) {
+	if (!story.image) return null;
+	if (story.image.startsWith('/')) {
+		return "https://tdd-edge.b-cdn.net/" + story.image;
+	}
+	const key = `/src/content/radar-stories/${day}/${story.image}`;
+	const imageModule = images[key] as { default: { src: string } } | undefined;
+	return imageModule?.default?.src || null;
+}
+
+const label = new Date(`${day}T00:00:00`).toLocaleDateString('en-US', {
+	weekday: 'long',
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+
+function bylineFor(story: StoryProps) {
+	if (story.authors.length > 0) {
+		return `By ${story.authors[0]}${story.authors.length > 1 ? ' et al.' : ''}`;
+	}
+	return null;
+}
+
+function sourceLabelFor(source: string) {
+	return SOURCE_LABEL[source] ?? source
+		.split('-')
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join(' ');
+}
+
+const lead = stories[0];
+const sources = [...new Set(stories.map((story) => story.source))]
+	.sort((left, right) => sourceLabelFor(left).localeCompare(sourceLabelFor(right)));
+
+const pageTitle = isHomepage 
+	? `${SITE_METADATA.name} | ${SITE_METADATA.tagline}` 
+	: `${label} | ${SITE_METADATA.name}`;
+
+const pageDescription = SITE_METADATA.longDescription;
+---
+
+<Layout title={pageTitle} description={pageDescription} image={resolveImage(lead, day) || undefined}>
+	<main class="page-container">
+		<article id="newspaper-sheet" class="newspaper-sheet" data-day={day} data-count={stories.length} data-prev={prevDay} data-next={nextDay}>
+			<header class="masthead">
+				<div class="masthead-eyebrow">
+					<span class="masthead-eyebrow-left">
+						<a href="/archive/" class="masthead-archive-link" aria-label="Back to archive" title="Back to archive">
+							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+							<span>Archive</span>
+						</a>
+					</span>
+					<div class="masthead-eyebrow-center-group">
+						<button id="prev-day-btn" class="masthead-nav-btn" disabled={!prevDay} aria-label="Previous edition" title="Previous edition">
+							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+						</button>
+						
+						<span class="masthead-eyebrow-center">{label}</span>
+						
+						<button id="next-day-btn" class="masthead-nav-btn" disabled={!nextDay} aria-label="Next edition" title="Next edition">
+							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+						</button>
+					</div>
+					<div class="masthead-eyebrow-right">
+						<span id="masthead-story-count">{stories.length} {stories.length === 1 ? 'Story' : 'Stories'}</span>
+						<ThemeToggleButton />
+					</div>
+				</div>
+				<h1 class="masthead-name">{SITE_METADATA.name}</h1>
+				<p class="masthead-tagline">{SITE_METADATA.tagline}</p>
+				<pre class="masthead-cat masthead-cat--left">
+  /\_/\
+ (=^.^=)
+ (")_(")
+				</pre>
+				<pre class="masthead-cat masthead-cat--right">
+  /\_/\
+ (=^.^=)
+ (")_(")
+				</pre>
+				<hr class="masthead-rule-thick" />
+				
+				<div class="filter-bar">
+					<div class="filter-group source-filter" id="source-filter-container">
+						<span class="filter-label">Source</span>
+						<button class="filter-mobile-trigger" aria-haspopup="listbox" aria-expanded="false" id="source-filter-trigger">
+							<svg class="filter-trigger-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+							<span class="filter-trigger-text" id="source-filter-text">All</span>
+							<svg class="filter-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="m6 9 6 6 6-6"/>
+							</svg>
+						</button>
+						<div class="filter-options">
+							<button class="filter-btn active" data-filter="all">All</button>
+							{sources.map((source) => (
+								<button class="filter-btn" data-filter={source}>{sourceLabelFor(source)}</button>
+							))}
+						</div>
+					</div>
+
+					<div class="filter-group interest-filter" id="interest-filter-container">
+						<span class="filter-label">Signal</span>
+						<button class="filter-mobile-trigger" aria-haspopup="listbox" aria-expanded="false" id="interest-filter-trigger">
+							<svg class="filter-trigger-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+							<span class="filter-trigger-text" id="interest-filter-text">All</span>
+							<svg class="filter-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="m6 9 6 6 6-6"/>
+							</svg>
+						</button>
+						<div class="filter-options">
+							<button class="filter-btn active" data-filter="all">All</button>
+							<button class="filter-btn" data-filter="8">Recommended</button>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="no-stories-message" id="no-stories-message">
+				<p>No stories match the selected filters in today's edition.</p>
+			</div>
+
+			{stories.length > 0 && (
+				<section class="newspaper-columns">
+					{stories.map((story, index) => (
+						<article class={`story ${index === 0 ? 'is-lead' : ''}`} data-source={story.source} data-interest={story.interest_score}>
+							<div class="story-byline">
+								{bylineFor(story) && <>{bylineFor(story)}<span class="story-source-sep">&middot;</span></>}
+								<a class="story-source-link" href={story.url} target="_blank" rel="noopener noreferrer">{sourceLabelFor(story.source)} &rsaquo;</a>
+								{story.comments && (
+									<>
+										<span class="story-source-sep">&middot;</span>
+										<a class="story-source-link" href={story.comments} target="_blank" rel="noopener noreferrer">Discuss &rsaquo;</a>
+									</>
+								)}
+								{(story.why_read || story.authors.length > 0) && (
+									<span class="why-info" tabindex="0">
+										<svg class="why-info-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+										<span class="why-tooltip">
+											{story.why_read && <><strong>Why read:</strong> {story.why_read}</>}
+											{story.why_read && story.authors.length > 0 && <br />}
+											{story.authors.length > 0 && (
+												<><strong>Authors:</strong> {story.authors.join(', ')}</>
+											)}
+										</span>
+									</span>
+								)}
+							</div>
+							<h2 class="story-headline">
+								<a href={story.url} target="_blank" rel="noopener noreferrer">{story.title}</a>
+							</h2>
+							{resolveImage(story, day) && (
+								<div class="story-image-wrapper is-loading">
+									<img 
+										src={resolveImage(story, day)} 
+										alt={story.title} 
+										class="story-featured-image loading" 
+										loading="lazy"
+										width="560"
+										height="418"
+										onload="this.classList.remove('loading'); this.parentElement.classList.remove('is-loading');"
+									/>
+								</div>
+							)}
+							<div class="story-body content blog-content">
+								<story.Content />
+							</div>
+						</article>
+					))}
+				</section>
+			)}
+
+			<Footer label={label} showDelayNote={isHomepage} />
+		</article>
+	</main>
+
+	<div id="image-modal" class="image-modal" aria-hidden="true">
+		<button id="image-modal-close" class="image-modal-close" aria-label="Close image preview">&times;</button>
+		<img id="image-modal-img" class="image-modal-img" src="" alt="" />
+	</div>
+</Layout>
+
+<script>
+	const day = document.getElementById('newspaper-sheet')!.getAttribute('data-day') as string;
+
+	const prevBtn = document.getElementById('prev-day-btn') as HTMLButtonElement;
+	const nextBtn = document.getElementById('next-day-btn') as HTMLButtonElement;
+
+	const imageModal = document.getElementById('image-modal') as HTMLElement;
+	const imageModalImg = document.getElementById('image-modal-img') as HTMLImageElement;
+	const imageModalClose = document.getElementById('image-modal-close') as HTMLButtonElement;
+
+	function openImageModal(src: string, alt: string) {
+		imageModalImg.src = src;
+		imageModalImg.alt = alt;
+		imageModal.classList.add('is-open');
+		imageModal.setAttribute('aria-hidden', 'false');
+		document.body.classList.add('modal-open');
+	}
+
+	function closeImageModal() {
+		imageModal.classList.remove('is-open');
+		imageModal.setAttribute('aria-hidden', 'true');
+		document.body.classList.remove('modal-open');
+		imageModalImg.src = '';
+	}
+
+	document.querySelectorAll<HTMLImageElement>('.story-featured-image').forEach((img) => {
+		img.classList.add('is-zoomable');
+		img.addEventListener('click', () => openImageModal(img.currentSrc || img.src, img.alt));
+	});
+
+	imageModalClose.addEventListener('click', closeImageModal);
+	imageModal.addEventListener('click', (e) => {
+		if (e.target === imageModal) closeImageModal();
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && imageModal.classList.contains('is-open')) closeImageModal();
+	});
+
+	const sheet = document.getElementById('newspaper-sheet')!;
+	const prevTarget = sheet.getAttribute('data-prev');
+	const nextTarget = sheet.getAttribute('data-next');
+
+	prevBtn?.addEventListener('click', () => {
+		if (prevTarget) window.location.href = `/${prevTarget}/`;
+	});
+
+	nextBtn?.addEventListener('click', () => {
+		if (nextTarget) window.location.href = `/${nextTarget}/`;
+	});
+
+	// Source and Interest filtering logic
+	const sourceButtons = document.querySelectorAll('#source-filter-container .filter-btn');
+	const interestButtons = document.querySelectorAll('#interest-filter-container .filter-btn');
+	const storyCountEl = document.getElementById('masthead-story-count')!;
+	const noStoriesMessageEl = document.getElementById('no-stories-message')!;
+	const allStories = document.querySelectorAll('[data-source]');
+
+	function updateActiveFilters() {
+		const activeSourceBtn = document.querySelector('#source-filter-container .filter-btn.active');
+		const activeInterestBtn = document.querySelector('#interest-filter-container .filter-btn.active');
+
+		const sourceFilter = activeSourceBtn ? activeSourceBtn.getAttribute('data-filter')! : 'all';
+		const interestFilter = activeInterestBtn ? activeInterestBtn.getAttribute('data-filter')! : 'all';
+
+		let visibleCount = 0;
+		let firstVisibleStory: Element | null = null;
+
+		allStories.forEach((story) => {
+			const source = story.getAttribute('data-source');
+			const interest = story.getAttribute('data-interest');
+
+			const sourceMatch = (sourceFilter === 'all' || source === sourceFilter);
+			const numericInterest = Number(interest);
+			const interestMatch = (
+				interestFilter === 'all' ||
+				(interestFilter === '8' && numericInterest >= 8)
+			);
+
+			if (sourceMatch && interestMatch) {
+				story.removeAttribute('data-hidden');
+				story.classList.remove('is-lead');
+				if (!firstVisibleStory) {
+					firstVisibleStory = story;
+				}
+				visibleCount++;
+			} else {
+				story.setAttribute('data-hidden', 'true');
+				story.classList.remove('is-lead');
+			}
+		});
+
+		if (firstVisibleStory) {
+			(firstVisibleStory as Element).classList.add('is-lead');
+		}
+
+		storyCountEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'Story' : 'Stories'}`;
+
+		if (visibleCount === 0) {
+			noStoriesMessageEl.style.display = 'block';
+		} else {
+			noStoriesMessageEl.style.display = 'none';
+		}
+
+		// Update mobile trigger text
+		const sourceFilterText = document.getElementById('source-filter-text');
+		const interestFilterText = document.getElementById('interest-filter-text');
+		
+		if (sourceFilterText && activeSourceBtn) {
+			sourceFilterText.textContent = activeSourceBtn.textContent;
+		}
+		if (interestFilterText && activeInterestBtn) {
+			interestFilterText.textContent = activeInterestBtn.textContent;
+		}
+	}
+
+	sourceButtons.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			sourceButtons.forEach((b) => b.classList.remove('active'));
+			btn.classList.add('active');
+			updateActiveFilters();
+		});
+	});
+
+	interestButtons.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			interestButtons.forEach((b) => b.classList.remove('active'));
+			btn.classList.add('active');
+			updateActiveFilters();
+		});
+	});
+
+	// Mobile dropdown toggle logic
+	const filterGroups = document.querySelectorAll('.filter-group');
+
+	filterGroups.forEach((group) => {
+		const trigger = group.querySelector('.filter-mobile-trigger');
+		if (trigger) {
+			trigger.addEventListener('click', (e) => {
+				e.stopPropagation();
+				// Toggle this one, close all others
+				const isOpen = group.classList.contains('open');
+				filterGroups.forEach((g) => {
+					g.classList.remove('open');
+					g.querySelector('.filter-mobile-trigger')?.setAttribute('aria-expanded', 'false');
+				});
+				
+				if (!isOpen) {
+					group.classList.add('open');
+					trigger.setAttribute('aria-expanded', 'true');
+				}
+			});
+		}
+		
+		// When clicking a button inside options, close the dropdown
+		const options = group.querySelectorAll('.filter-btn');
+		options.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				group.classList.remove('open');
+				trigger?.setAttribute('aria-expanded', 'false');
+			});
+		});
+	});
+
+	// Close dropdowns when clicking outside
+	document.addEventListener('click', () => {
+		filterGroups.forEach((group) => {
+			group.classList.remove('open');
+			group.querySelector('.filter-mobile-trigger')?.setAttribute('aria-expanded', 'false');
+		});
+	});
+
+	// Run initial filter application on load
+	updateActiveFilters();
+
+</script>
+
+<style>
+	.story-image-wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 560px;
+		height: auto;
+		aspect-ratio: 560 / 418;
+		overflow: hidden;
+		border-radius: 4px;
+		margin: 1em 0;
+		background-color: var(--bg-sheet-alt);
+	}
+
+	.story-image-wrapper.is-loading {
+		animation: shimmer 1.5s infinite ease-in-out;
+	}
+
+	@keyframes shimmer {
+		0% {
+			background-color: var(--bg-sheet-alt);
+		}
+		50% {
+			background-color: var(--bg-well);
+		}
+		100% {
+			background-color: var(--bg-sheet-alt);
+		}
+	}
+
+	.story-featured-image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 560 / 418;
+		display: block;
+		border-radius: 4px;
+		mix-blend-mode: multiply;
+		cursor: zoom-in;
+		filter: contrast(1.12) brightness(1.04) saturate(0.95);
+		transition: filter 0.4s ease, opacity 0.4s ease;
+	}
+
+	.story-featured-image.loading {
+		filter: blur(15px) contrast(1.12) brightness(1.04) saturate(0.95) !important;
+		opacity: 0.6 !important;
+	}
+
+	:global([data-theme="dark"]) .story-featured-image {
+		mix-blend-mode: normal;
+		opacity: 0.8;
+		filter: brightness(0.75) contrast(1.05) saturate(0.85);
+	}
+
+	:global([data-theme="dark"]) .story-featured-image.loading {
+		filter: blur(15px) brightness(0.75) contrast(1.05) saturate(0.85) !important;
+		opacity: 0.5 !important;
+	}
+
+	@media (min-width: 720px) {
+		.story.is-lead:has(.story-image-wrapper) {
+			display: grid;
+			grid-template-columns: 1fr 1.2fr;
+			column-gap: 2rem;
+		}
+
+		.story.is-lead:has(.story-image-wrapper) .story-byline,
+		.story.is-lead:has(.story-image-wrapper) .story-headline {
+			grid-column: 1 / span 2;
+		}
+
+		.story.is-lead:has(.story-image-wrapper) .story-image-wrapper {
+			grid-column: 1;
+			grid-row: 3;
+			margin: 0;
+		}
+
+		.story.is-lead:has(.story-image-wrapper) .story-body {
+			grid-column: 2;
+			grid-row: 3;
+			column-count: 1 !important;
+		}
+	}
+</style>
+
+<style is:global>
+	.story-body img {
+		display: none !important;
+	}
+</style>

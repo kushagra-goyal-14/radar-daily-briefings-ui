@@ -1,0 +1,27 @@
+---
+import { SITE_METADATA } from '../config';
+
+interface Props {
+	label?: string;
+	showDelayNote?: boolean;
+}
+
+const { label, showDelayNote = false } = Astro.props;
+---
+
+<footer class="edition-colophon">
+	{showDelayNote && (
+		<p class="edition-delay-note">
+			Stories are selected and ranked by the Radar Briefings pipeline.
+		</p>
+	)}
+	<div class="colophon-row">
+		{label ? `End of Edition — ${label}` : SITE_METADATA.name} &mdash; Selected by the Radar ranking pipeline
+	</div>
+	<div class="colophon-row">
+		Frontend forked from and inspired by <a href="https://arpitbhayani.me/" target="_blank" rel="noopener noreferrer">Arpit Bhayani</a> &bull; <a href="https://github.com/arpitbbhayani/the-daily-diff" target="_blank" rel="noopener noreferrer">Original project</a>
+	</div>
+	<div class="colophon-row">
+		<a href="/rss.xml">RSS</a> &bull; <a href="/md" target="_blank">Markdown API</a> &bull; <a href="/json" target="_blank">JSON API</a>
+	</div>
+</footer>
