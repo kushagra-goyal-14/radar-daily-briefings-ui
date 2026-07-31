@@ -9,13 +9,12 @@ section: community
 tags:
   - wordcamp-us-2026
   - contributor-day
-  - wordpress-hosting
+  - hosting-team
+  - wordpress-community
   - distributed-testing
-  - php-testing
-  - handbook-documentation
-title: WordCamp US 2026 Hosting team recruits contributors for distributed testing and handbook work
+title: WordCamp US 2026 Contributor Day sets Hosting Team work
 url: https://make.wordpress.org/hosting/2026/07/29/wordcamp-us-2026-contributor-day
-why_read: Contributors can engage with WordPress hosting compatibility testing and documentation maintenance that affect plugin and theme compatibility across hosting platforms.
+why_read: Engineers can identify the planned hosting projects, participation requirements, and review rules before contributing.
 status: proposed
 source_published_at: 2026-07-29T21:21:11.000Z
 source_external_id: https://make.wordpress.org/hosting/?p=183713
@@ -27,8 +26,8 @@ depth_score: 4
 impact_score: 5
 ---
 
-WordCamp US 2026 will include a Contributor Day on August 16, led by the WordPress Hosting team. Contributors are invited to work on distributed testing infrastructure, test runner enhancements for multiple server environments, and handbook updates documenting hosting compatibility.
+The WordPress Hosting Team has announced its plans for WordCamp US 2026 Contributor Day on August 16 in Phoenix, with remote participation available through Slack. The event is scheduled rather than a completed project release.
 
-The team maintains a PHPUnit Test Runner that enables web hosts to test unreleased WordPress versions and report compatibility issues. Contributor Day work focuses on supporting different PHP, MySQL, and MariaDB configurations in test results and completing PHP 7.0 and 7.1 compatibility documentation in the Hosting Handbook.
+Planned work includes distributed testing on hosting systems, PHPUnit Test Runner improvements for multi-environment reporting, and updates to the WordPress Hosting and Advanced Administration handbooks. The handbooks’ stated priority includes PHP 7.0 and 7.1 compatibility documentation.
 
-In-person registration opens at 8:00 AM local time; remote contributors can join the #hosting Slack channel at 16:00 UTC. Participants need WordPress. org and GitHub accounts, Git installed, and a code editor.
+Testing-software changes must be tested on a hosting platform before merging, and pull requests require two approvals. The document provides participation workflows and prerequisites but no completed implementation or architectural results.

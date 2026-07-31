@@ -7,15 +7,15 @@ generated_at: 2026-07-31T07:57:22.292Z
 source: gutenberg-releases
 section: wordpress
 tags:
-  - gutenberg
+  - gutenberg-23-7-rc1
   - block-editor
-  - release-candidate
   - global-styles
+  - real-time-collaboration
   - accessibility
   - performance
-title: Gutenberg 23.7.0 RC1 released with block editor fixes and accessibility improvements
+title: Gutenberg 23.7.0 RC1 ships editor and collaboration fixes
 url: https://github.com/WordPress/gutenberg/releases/tag/v23.7.0-rc.1
-why_read: Block editor developers can evaluate compatibility, test new features like inheritance UI and shift-click range selection, and plan integration before the stable release.
+why_read: Gutenberg integrators can review the release candidate’s editor behavior, collaboration changes, and compatibility-sensitive fixes before adoption.
 status: released
 source_published_at: 2026-07-29T11:18:35.000Z
 source_external_id: tag:github.com,2008:Repository/80862584/v23.7.0-rc.1
@@ -27,8 +27,8 @@ depth_score: 7
 impact_score: 6
 ---
 
-The Gutenberg Project has released version 23.7.0 RC1 as a pre-release candidate on July 29, 2026. The changelog documents over 60 merged changes, including component enhancements, block library fixes, and editor behavior improvements.
+The Gutenberg project published 23.7.0 RC1 on July 29, 2026, and labels it a pre-release. The changelog spans editor components, Global Styles, media, accessibility, performance, and real-time collaboration.
 
-Key changes include refined focus ring styling in base styles, fixed layout shifts in DataViews and search fields, new shift-click range selection in DataViewsPicker, and improved global styles inheritance reflection in block inspector controls. Accessibility improvements address Navigation aria-expanded updates and Alignment control handling. Performance optimizations target rich text typing responsiveness and unnecessary data layer re-fetches.
+Notable changes include stricter view-configuration merge handling, inherited Global Styles values in block controls, fixes for collaborative undo and unsaved edits, and rich-text performance work. The release also adds component and DataViews enhancements, plus an Interactivity API directive refactor.
 
-The release places the global styles inheritance UI behind an experimental flag and relocates real-time collaboration code to a dedicated experimental directory.
+This candidate gives WordPress integrators concrete areas to test before adoption. It is not the final 23.7.0 release, and the supplied evidence includes no migration or compatibility results.

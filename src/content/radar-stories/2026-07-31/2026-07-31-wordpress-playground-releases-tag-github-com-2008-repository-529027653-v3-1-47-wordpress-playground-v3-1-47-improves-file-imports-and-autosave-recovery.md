@@ -8,14 +8,14 @@ source: wordpress-playground-releases
 section: wordpress
 tags:
   - wordpress-playground
+  - webassembly
   - blueprints
-  - file-imports
-  - autosave-recovery
-  - zip-snapshots
+  - import-export
+  - browser-persistence
   - opfs
-title: WordPress Playground v3.1.47 improves file imports and autosave recovery
+title: WordPress Playground v3.1.47 improves imports and browser persistence
 url: https://github.com/WordPress/wordpress-playground/releases/tag/v3.1.47
-why_read: Developers using WordPress Playground for local testing can rely on improved Blueprint failure recovery and ZIP import transparency when managing site snapshots and configurations.
+why_read: The release adds practical reliability and backup improvements for browser-based WordPress development and Playground site management.
 status: released
 source_published_at: 2026-07-27T11:17:33.000Z
 source_external_id: tag:github.com,2008:Repository/529027653/v3.1.47
@@ -27,8 +27,8 @@ depth_score: 6
 impact_score: 5
 ---
 
-WordPress Playground v3.1.47 has been released with reliability improvements focused on file imports, Blueprint execution, and autosave recovery. The update addresses ZIP extraction transparency, failure-safe WordPress imports, and concurrency issues in browser storage (OPFS).
+WordPress Playground v3.1.47 was released on 27 July 2026. The release updates documentation, PHP WebAssembly and Blueprint behavior, the website, and the client package.
 
-Key changes include failure-safe WordPress imports, ZIP extraction progress reporting during Blueprint runs, and explicit recovery paths when Blueprint execution fails. The release also improves concurrent metadata handling across browser tabs and strengthens autosave preservation during OPFS synchronization.
+Blueprint file imports are made failure-safe, ZIP extraction reports progress, and ZIP drops are accepted across the page. Blueprints can export complete versioned Playground snapshots and import versioned user content while retaining legacy defaults. Other changes address OPFS synchronization, concurrent metadata writes, autosave recovery, and saved Playground records.
 
-Developers using Playground for local WordPress development benefit from more transparent import states and recovery options when snapshots or configurations encounter errors. The versioned snapshot export capability allows site files to be backed up and restored while excluding Playground runtime files.
+The release is relevant to browser-based WordPress development and site management workflows. The supplied notes summarize merged changes but do not provide deeper architectural details or independent performance data.

@@ -4,19 +4,24 @@ import ThemeToggleButton from './ThemeToggleButton.astro';
 import Footer from './Footer.astro';
 import { SITE_METADATA } from '../config';
 
-const SOURCE_LABEL: Record<string, string> = {
-	arxiv: 'arXiv',
+const SOURCE_ACRONYM_PARTS: Record<string, string> = {
+	ai: 'AI',
+	api: 'API',
 	hn: 'HN',
-	github: 'GH',
-	'wordpress-news': 'WP News',
-	'wordpress-developer-blog': 'WP Dev',
-	'make-wordpress-core': 'WP Core',
-	'make-wordpress-accessibility': 'WP A11y',
-	'make-wordpress-performance': 'WP Perf',
-	'make-wordpress-security': 'WP Security',
-	'gutenberg-times': 'Gutenberg',
-	'hugging-face-blog': 'HF',
-	lobsters: 'Lobsters',
+	rss: 'RSS',
+	wp: 'WP',
+	wordpress: 'WP',
+};
+
+const SOURCE_FULL_WORD_LABELS: Record<string, string> = {
+	ai: 'AI',
+	api: 'API',
+	arxiv: 'arXiv',
+	github: 'GitHub',
+	hn: 'HN',
+	rss: 'RSS',
+	wp: 'WP',
+	wordpress: 'WordPress',
 };
 
 interface StoryProps {
@@ -77,9 +82,22 @@ function bylineFor(story: StoryProps) {
 }
 
 function sourceLabelFor(source: string) {
-	return SOURCE_LABEL[source] ?? source
-		.split('-')
-		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+	return source
+		.trim()
+		.split(/[-_\s]+/)
+		.filter(Boolean)
+		.map((part) => SOURCE_ACRONYM_PARTS[part.toLowerCase()] ?? part.charAt(0).toUpperCase())
+		.join('');
+}
+
+function fullSourceNameFor(source: string) {
+	return source
+		.trim()
+		.split(/[-_\s]+/)
+		.filter(Boolean)
+		.map((part) => SOURCE_FULL_WORD_LABELS[part.toLowerCase()] ?? (
+			part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+		))
 		.join(' ');
 }
 
@@ -148,7 +166,7 @@ const pageDescription = SITE_METADATA.longDescription;
 						<div class="filter-options">
 							<button class="filter-btn active" data-filter="all">All</button>
 							{sources.map((source) => (
-								<button class="filter-btn" data-filter={source}>{sourceLabelFor(source)}</button>
+								<button class="filter-btn" data-filter={source} title={fullSourceNameFor(source)} aria-label={fullSourceNameFor(source)}>{sourceLabelFor(source)}</button>
 							))}
 						</div>
 					</div>
@@ -180,7 +198,7 @@ const pageDescription = SITE_METADATA.longDescription;
 						<article class={`story ${index === 0 ? 'is-lead' : ''}`} data-source={story.source} data-interest={story.interest_score}>
 							<div class="story-byline">
 								{bylineFor(story) && <>{bylineFor(story)}<span class="story-source-sep">&middot;</span></>}
-								<a class="story-source-link" href={story.url} target="_blank" rel="noopener noreferrer">{sourceLabelFor(story.source)} &rsaquo;</a>
+								<a class="story-source-link" href={story.url} target="_blank" rel="noopener noreferrer" title={fullSourceNameFor(story.source)} aria-label={`Read at ${fullSourceNameFor(story.source)}`}>{sourceLabelFor(story.source)} &rsaquo;</a>
 								{story.comments && (
 									<>
 										<span class="story-source-sep">&middot;</span>

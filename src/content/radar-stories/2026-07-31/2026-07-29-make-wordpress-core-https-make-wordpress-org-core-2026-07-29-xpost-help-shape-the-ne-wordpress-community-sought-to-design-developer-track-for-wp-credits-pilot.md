@@ -10,11 +10,11 @@ tags:
   - wp-credits
   - developer-education
   - curriculum-design
-  - wordpress-skills
   - community-contribution
-title: WordPress community shapes developer track for WP Credits pilot program
+  - wordpress-skills
+title: WP Credits seeks input for a developer-track pilot
 url: https://make.wordpress.org/community/2026/07/17/help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity
-why_read: WordPress educators and developers can influence the structure of job-relevant skill validation and contribute directly to curriculum design for the WP Credits program.
+why_read: WordPress educators can influence the contribution-based curriculum and its beginner-to-advanced skill progression before the pilot is defined.
 status: in_progress
 source_published_at: 2026-07-29T01:49:00.000Z
 source_external_id: https://make.wordpress.org/core/2026/07/29/xpost-help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity/
@@ -26,8 +26,8 @@ depth_score: 3
 impact_score: 5
 ---
 
-The WordPress community is being asked to help design a developer-focused track for WP Credits, an educational credential program that has grown steadily. A US college has expressed interest in piloting a developer track, with community input needed to define job-relevant contributions for students.
+The WordPress community is seeking input for a proposed developer-focused WP Credits track at a US college. The post frames this as a pilot opportunity and asks developers and WordPress teachers to contribute ideas.
 
-The program seeks guidance on what contributions students should undertake at each level of a proposed 2–3 tier learning path (beginner to advanced). The WordPress project team needs at least the first tier defined by end of August to proceed with the pilot.
+The proposed path could have two or three levels, progressing from beginner to advanced. Contributors are asked to identify specific contributions that would help students build job-relevant skills, with at least the first tier needed by the end of August to keep the pilot on schedule.
 
-Contributors can engage via a GitHub issue or the #wpcredits Slack channel. The program's success depends on input from developers and WordPress educators who can reflect on real skills needed for entry-level roles.
+The curriculum and tier requirements are not yet defined in the supplied material. Interested contributors are directed to a GitHub issue and the WP Credits Slack channel for further discussion.

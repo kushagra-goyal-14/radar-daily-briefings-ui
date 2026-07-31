@@ -3,19 +3,21 @@ story_id: story_7f571baff5e640fbb89875ed4f383117
 authors:
   - lwn.net via fanf
 date: 2026-07-31
+generated_at: 2026-07-31T05:46:48.707Z
 source: lobsters
 section: programming
 tags:
   - gccrs
   - rust-compiler
   - linux-kernel
-  - gcc-frontend
   - drop-infrastructure
   - name-resolution
-title: GCC Rust frontend makes progress compiling Linux kernel components
+  - compiler-frontend
+title: gccrs advances toward compiling Linux kernel Rust code
 url: https://lwn.net/SubscriberLink/1083202/f1ba926cd57ac5c5
-why_read: Rust-in-Linux developers and toolchain maintainers can assess gccrs capability gaps and the technical challenges blocking GCC-based Rust compilation of production kernel code.
+why_read: The technical findings identify compiler implementation areas that matter for Rust kernel compatibility and GCC-based toolchain planning.
 status: in_progress
+source_published_at: 2026-07-30T18:06:16.000Z
 source_external_id: https://lobste.rs/s/cpyuub
 source_adapter: rss
 discussion: https://lobste.rs/s/cpyuub/progress_toward_compiling_linux_with
@@ -27,12 +29,10 @@ utility_score: 5
 novelty_score: 6
 depth_score: 7
 impact_score: 6
-generated_at: 2026-07-31T05:46:48.707Z
-source_published_at: 2026-07-30T18:06:16.000Z
 ---
 
-The gccrs project is pursuing a Rust frontend for the GCC compiler, with emphasis since early 2026 on compiling Linux kernel code. This work is needed because the kernel currently requires the LLVM-based rustc compiler, but a GCC-based alternative would support architectures not targeted by LLVM and integrate with GCC's plugin ecosystem.
+The gccrs project is making progress toward compiling the Linux kernel's Rust components, but full kernel compilation remains a work in progress. The effort has used kernel crates to expose compiler defects and guide implementation.
 
-In March 2026, gccrs shifted from version-based planning to three capability milestones: embedded Rust (no_std, core crate only), Rust for Linux (adding alloc and kernel-specific crates), and general-purpose. The first milestone is nearly complete. Work on the second is underway, with the team adding compiler_builtins support and addressing kernel-specific crates. Interns joined the project in May to fix kernel-encountered bugs and implement missing allocator support.
+Recent work includes Drop infrastructure for Rust destructor semantics, namespace-resolution changes, attribute processing, metadata generation, compiler builtins, and support for no_core programs. The project is also implementing alloc support for the Rust for Linux milestone.
 
-Real-world kernel testing…
+For compiler and kernel engineers, these changes clarify the compatibility work required for a GCC-based Rust toolchain. gccrs still cannot fully handle the kernel's complex Rust abstractions, and upstream GCC integration remains a coordination challenge.
