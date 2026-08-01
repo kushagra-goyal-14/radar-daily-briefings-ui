@@ -11,23 +11,24 @@ tags:
   - api-release
   - agent-capabilities
   - responses-api
-  - public-beta
+  - codex-integration
+  - model-benchmarks
 title: DeepSeek releases V4-Flash API in public beta
 url: https://api-docs.deepseek.com/updates
-why_read: Engineers can evaluate the beta using the unchanged model parameter while accounting for limited benchmark methodology and internal test sets.
+why_read: Engineers can assess integration changes, beta readiness, and the limited context behind DeepSeek’s reported agent benchmarks.
 status: released
 source_published_at: 2026-07-31T06:08:36.000Z
 hn_id: "49119559"
 comments: https://news.ycombinator.com/item?id=49119559
 interest_score: 8
 utility_score: 7
-novelty_score: 7
-depth_score: 6
+novelty_score: 3
+depth_score: 5
 impact_score: 7
 ---
 
-DeepSeek has released the DeepSeek-V4-Flash API in public beta. Existing API calling remains unchanged: users select the model with the name deepseek-v4-flash.
+DeepSeek has officially released the DeepSeek-V4-Flash API in public beta. Existing API calling remains unchanged: users select the model with `deepseek-v4-flash`.
 
-The release natively supports the Responses API format and is adapted for Codex. DeepSeek-V4-Flash-0731 keeps the same architecture and size as V4-Flash-Preview and was post-trained. DeepSeek reports results across agent and coding benchmarks, including Terminal Bench 2.1 at 82.7 and NL2Repo at 54.2.
+The release reports enhanced agent capabilities across benchmarks including Terminal Bench 2.1, NL2Repo, Cybergym, DeepSWE, and Toolathlon. DeepSeek-V4-Flash natively supports the Responses API format and is adapted for Codex. The release keeps the architecture and size of DeepSeek-V4-Flash-Preview and was only re-post-trained.
 
-Engineers can evaluate the model without changing the calling method, but should treat the release as beta. The supplied evidence offers testing configuration but limited methodology, and two listed benchmarks are internal test sets.
+DeepSeek provides test settings, including its planned minimal harness, maximum effort, `topp=0.95`, and temperature `1.0`. Some reported benchmarks are internal, and the supplied evidence does not include methodology or reproducibility details.
