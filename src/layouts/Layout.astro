@@ -67,6 +67,13 @@ const socialImageURL = image
 		<meta name="twitter:description" content={description} />
 		{socialImageURL && <meta name="twitter:image" content={socialImageURL} />}
 		{socialImageURL && <meta name="twitter:image:alt" content={title} />}
+		<!-- Cloudflare Web Analytics -->
+		<script
+			type="module"
+			src="https://static.cloudflareinsights.com/beacon.min.js"
+			data-cf-beacon='{"token": "0c43c7fd004f46b689cd00edc37360e7"}'
+		></script>
+		<!-- End Cloudflare Web Analytics -->
 		<script is:inline>
 			(function () {
 				const savedTheme = localStorage.getItem('theme');
