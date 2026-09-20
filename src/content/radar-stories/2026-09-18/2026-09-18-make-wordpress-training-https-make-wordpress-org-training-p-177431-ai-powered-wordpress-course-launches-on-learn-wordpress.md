@@ -9,13 +9,13 @@ section: wordpress
 tags:
   - wordpress-ai
   - ai-course
-  - learn-wordpress
+  - wordpress-connectors
   - mcp-adapter
-  - ai-client
-  - plugin-development
-title: AI-Powered WordPress course launches on Learn WordPress
+  - wordpress-ai-client
+  - responsible-ai
+title: Learn WordPress releases AI-Powered WordPress course
 url: https://make.wordpress.org/training/2026/09/18/the-ai-powered-wordpress-course-is-now-live-on-learn-wordpress
-why_read: WordPress teams can use the course to learn practical AI workflows and the APIs for extending them through plugins and themes.
+why_read: Engineers can assess the course’s coverage of WordPress AI APIs, integrations, access controls, and responsible-use practices.
 status: released
 source_published_at: 2026-09-18T00:31:14.000Z
 source_external_id: https://make.wordpress.org/training/?p=177431
@@ -23,12 +23,12 @@ source_adapter: rss
 interest_score: 7
 utility_score: 8
 novelty_score: 6
-depth_score: 6
+depth_score: 5
 impact_score: 6
 ---
 
-Learn WordPress has released its AI-Powered WordPress course, a nine-hour curriculum covering practical use of WordPress AI capabilities. The course is intended for site owners, content creators, editors, administrators, and developers.
+Learn WordPress has released the AI-Powered WordPress course, a structured resource covering AI capabilities available in WordPress 7.0 and later. It is estimated to take nine hours and begins with material for site owners, publishers, editors, and administrators.
 
-The modules cover AI provider connections, editorial assistance, image alt-text generation, comment sentiment and toxicity analysis, request logging, connector approvals, and integrations through the MCP Adapter. Developer content introduces WordPress Abilities and the WordPress AI Client for plugins and themes.
+The curriculum covers AI provider connections, editorial drafting and classification, automated image alt text, comment sentiment and toxicity analysis, Request Logging, and Connector Approvals. Its developer-focused module introduces the MCP Adapter, WordPress Abilities, and the WordPress AI Client for plugins and themes.
 
-Learners need an active WordPress 7.0-or-later site, administrator access, and basic familiarity with generative AI tools. The supplied material does not include detailed implementation examples or measurements.
+The course requires an active WordPress site and administrator access. Module 4 is approachable without prior PHP experience, though familiarity with theme or plugin files is helpful.
