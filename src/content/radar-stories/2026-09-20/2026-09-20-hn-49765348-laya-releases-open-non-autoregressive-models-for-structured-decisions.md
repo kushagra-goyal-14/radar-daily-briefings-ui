@@ -13,9 +13,9 @@ tags:
   - probability-calibration
   - multilingual-routing
   - open-weights
-title: Laya releases open non-autoregressive models for structured decisions
+title: Laya releases open multilingual models for structured decisions
 url: https://laya.convaiinnovations.com/
-why_read: Engineers can assess an open deployment option for high-volume classification while accounting for routing, calibration, and option-count constraints.
+why_read: Engineers can evaluate an open, schema-oriented inference approach while accounting for routing, calibration, option-count, and fine-tuning constraints.
 status: released
 source_published_at: 2026-09-19T10:46:58.000Z
 hn_id: "49765348"
@@ -24,11 +24,11 @@ interest_score: 8
 utility_score: 8
 novelty_score: 7
 depth_score: 8
-impact_score: 6
+impact_score: 7
 ---
 
-The Laya project reports releasing an open family of non-autoregressive decision models for structured questions. Its checkpoints support choice selection, ordinal scoring, and boolean probabilities, with a Python package and Hugging Face repository.
+The Laya project reports released non-autoregressive models for structured decisions. Its three checkpoints cover English, multilingual, and typed-decision workloads, with Apache 2.0 weights and a Python package.
 
-The models use bidirectional encoders and a router that inspects Unicode scripts before selecting English or multilingual checkpoints. The article reports 32.8-millisecond single-question inference, 7.2-millisecond batched inference, and support for more than 100 languages.
+Laya defines choice, ordinal-score, and boolean primitives that return distributions or probabilities in one forward pass. A Unicode- and stopword-based router selects checkpoints before inference, supporting multilingual inputs and avoiding language-script failures reported for the English model.
 
-Engineers should note that the evidence is project-reported. Performance depends on fine-tuning and calibration, while choice accuracy declines with more than 20 options; the supplied material does not independently validate the benchmarks or Jev comparison.
+The article reports low-millisecond latency and benchmark gains over TypeSafe Jev, but these figures are project-authored. Engineers should note that key results require fine-tuning, calibration needs domain fitting, and performance drops sharply for large choice sets.
