@@ -11,25 +11,24 @@ tags:
   - hbm4e
   - high-bandwidth-memory
   - dram
-  - semiconductor-manufacturing
   - wafer-thinning
   - glass-carriers
-title: Samsung expected to more than double HBM4-family output
+title: Samsung plans to more than double HBM4-family output
 url: https://en.sedaily.com/finance/2026/09/20/samsung-to-double-hbm4-output-next-year-sources-say
-why_read: The projections inform advanced-memory capacity planning while leaving final production outcomes and supply assumptions unconfirmed.
-status: in_progress
+why_read: The reported capacity shift informs advanced-memory sourcing and planning while highlighting uncertainty in industry projections.
+status: proposed
 source_published_at: 2026-09-20T17:38:50.000Z
 hn_id: "49778029"
 comments: https://news.ycombinator.com/item?id=49778029
-interest_score: 6
+interest_score: 7
 utility_score: 5
-novelty_score: 6
+novelty_score: 5
 depth_score: 6
 impact_score: 7
 ---
 
-Samsung Electronics is expected to more than double production of its HBM4 family, including HBM4 and HBM4E, next year. The report describes an ongoing scale-up rather than a completed production milestone.
+Samsung Electronics is expected to more than double output of its HBM4 family, including HBM4 and HBM4E, next year. The report describes planned capacity expansion rather than a confirmed completed production change.
 
-Industry sources say monthly outsourced cleaning of glass carriers, which support wafers during thinning, is expected to rise from 20,000 sheets this year to 50,000 next year. Samsung began mass-production HBM4 shipments in February and supplied 12-layer HBM4E samples to customers including Nvidia in May.
+According to industry sources cited by Seoul Economic Daily, monthly outsourced glass-carrier cleaning is planned to rise from 20,000 to 50,000 sheets. Glass carriers support wafers during thinning and drilling, while the products being scaled use 12-layer and higher stacks.
 
-Industry projections also estimate higher wafer input and an HBM4-family shipment mix near 80%. These figures remain expectations, with carrier reuse, loading methods, yield, and translation limiting certainty.
+Industry estimates also project higher wafer input and a larger HBM4-family shipment share as HBM4E production ramps. These figures remain projections, and the supplied article provides no independent confirmation.
