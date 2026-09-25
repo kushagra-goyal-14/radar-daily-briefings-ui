@@ -8,13 +8,12 @@ section: ai
 tags:
   - claude-opus-5-5
   - large-language-models
-  - model-pricing
-  - llm-comparison
-  - reasoning-models
-  - ai-coding-tools
-title: Anthropic releases Claude Opus 5.5 amid LLM price cuts
+  - llm-pricing
+  - reasoning-levels
+  - agentic-workflows
+title: Anthropic releases Claude Opus 5.5 amid LLM price competition
 url: https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna
-why_read: Engineers evaluating model costs and coding workflows can compare documented pricing with an independent hands-on failure mode.
+why_read: Engineers evaluating model cost and reliability should weigh Opus 5.5’s lower pricing against observed maximum-reasoning failures.
 status: released
 source_published_at: 2026-09-22T23:46:41.000Z
 source_external_id: https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/
@@ -24,13 +23,13 @@ discussions:
     url: https://news.ycombinator.com/item?id=49803892
 interest_score: 8
 utility_score: 7
-novelty_score: 8
+novelty_score: 6
 depth_score: 6
-impact_score: 8
+impact_score: 7
 ---
 
-Anthropic released Claude Opus 5.5 on September 22, 2026, calling it the first model in the Claude 5.5 family. Anthropic says it matches Claude Fable 5.1 on most work and costs 40% less to run than Opus 5.
+Anthropic has released Claude Opus 5.5, the first model in its Claude 5.5 family. Anthropic says it matches Claude Fable 5.1 on most work and costs 40% less to run than Opus 5.
 
-The supplied analysis lists pricing of $4 per million input tokens and $20 per million output tokens, with cache reads at $0.20 per million. It also reports that maximum thinking reached Opus 5.5’s 128,000-token output limit twice during an SVG-generation test without producing a response.
+The primary article lists pricing of $4 per million input tokens and $20 per million output tokens, with cache reads reduced from the prior Opus pricing. Simon Willison also reports that maximum reasoning twice exhausted Opus 5.5’s 128,000-token output limit during an SVG-generation test.
 
-These observations matter for model selection and agentic cost planning. Anthropic’s benchmarks are company-reported, while the SVG result is a limited test rather than a systematic evaluation.
+The release is relevant to model and cost selection, but the failure evidence is narrow and the broader performance claims rely on company testing and informal observations.
