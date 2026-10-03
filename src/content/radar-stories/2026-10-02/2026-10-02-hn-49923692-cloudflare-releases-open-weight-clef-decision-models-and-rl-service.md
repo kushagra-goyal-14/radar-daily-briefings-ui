@@ -8,14 +8,14 @@ source: hn
 section: ai
 tags:
   - decision-models
-  - open-weights
+  - open-weight-models
   - reinforcement-learning
-  - model-fine-tuning
+  - fine-tuning
   - workers-ai
-  - agentic-workflows
-title: Cloudflare releases open-weight Clef decision models and RL service
+  - typed-outputs
+title: Cloudflare releases open-weight Clef decision models and RL platform
 url: https://blog.cloudflare.com/clef-decision-models
-why_read: Engineers can evaluate typed, latency-focused decision models and assess Cloudflare’s hosted and fine-tuning deployment path.
+why_read: Engineers can evaluate typed decision outputs, open weights, edge hosting, and a documented path for workload-specific fine-tuning.
 status: released
 source_published_at: 2026-10-01T16:18:57.000Z
 hn_id: "49923692"
@@ -27,8 +27,8 @@ depth_score: 8
 impact_score: 7
 ---
 
-Cloudflare has released Clef and Clef-flash, decision models hosted on Workers AI and open-sourced on Hugging Face under Apache 2.0. It also introduced a hands-on reinforcement-learning service for fine-tuning Clef, while describing a self-serve platform as a later goal.
+Cloudflare has released its Clef and Clef-flash decision models on Workers AI and as open weights on Hugging Face under Apache 2.0. It also introduced an RL fine-tuning service for customers, initially supported by a forward-deployed engineering team.
 
-The models produce typed probability outputs rather than intermediate generated text. Cloudflare says Clef performs a Qwen-based prefill, then scores valid schema choices in parallel using specialized attention routing; Clef also supports image inputs and a 64k context window.
+The models produce typed schema outputs and probabilities rather than intermediate generated text. Cloudflare says Clef uses a Qwen backbone, parallel schema-choice scoring, a vision encoder, and a 64k context window; Clef-flash targets latency-sensitive decisions.
 
-Cloudflare reports lower latency than several comparison models in its evaluations and cites a 2.2-second internal website-classification workflow. Those results are company-reported, and the supplied evidence includes no independent validation.
+Cloudflare reports benchmark and latency advantages in its evaluations, but the supplied evidence contains no independent validation. The planned self-serve fine-tuning platform and several supporting components remain work in progress.
