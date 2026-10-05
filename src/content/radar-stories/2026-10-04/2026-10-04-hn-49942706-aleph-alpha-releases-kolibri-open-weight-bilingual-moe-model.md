@@ -7,28 +7,28 @@ generated_at: 2026-10-04T07:30:13.447Z
 source: hn
 section: ai
 tags:
-  - kolibri
-  - mixture-of-experts
   - open-weight-model
+  - mixture-of-experts
+  - german-language-model
   - long-context-inference
-  - bilingual-model
-  - model-serving
-title: Aleph Alpha releases Kolibri open-weight bilingual MoE model
+  - vllm-plugin
+  - sovereign-ai
+title: Aleph Alpha releases Kolibri open-weight bilingual model
 url: https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model
-why_read: Engineers can evaluate a sovereign, on-premise model with long-context serving, bilingual specialization, and documented vLLM deployment settings.
+why_read: Engineers can evaluate a locally deployable German-English model with sparse inference, controllable reasoning effort, and documented serving requirements.
 status: released
 source_published_at: 2026-10-03T09:36:04.000Z
 hn_id: "49942706"
 comments: https://news.ycombinator.com/item?id=49942706
-interest_score: 8
+interest_score: 9
 utility_score: 8
-novelty_score: 6
+novelty_score: 7
 depth_score: 8
-impact_score: 7
+impact_score: 8
 ---
 
-Aleph Alpha has released Kolibri, an English-German mixture-of-experts Transformer with 78 billion total parameters, about 3 billion active parameters, and contexts up to 1 million tokens. The weights are available on Hugging Face under Apache 2.0 license terms.
+Aleph Alpha has released Kolibri, an English-German mixture-of-experts model with 78B total parameters and roughly 3B active parameters. Its full weights are available on Hugging Face under Apache 2.0 terms.
 
-The model uses 384 experts, activates roughly 3 billion parameters per token, and combines sliding-window attention with full attention in selected layers. Aleph Alpha describes specialized training for German, reasoning, mathematics, coding, grounding, and agentic behavior.
+The model uses 384 experts, activates a small subset per token, and supports controllable reasoning effort, tool calling, and long-context inference. Aleph Alpha provides a vLLM plugin and commands for serving it locally; contexts beyond 262,144 tokens require a documented 1M-token override.
 
-Kolibri can be served with Aleph Alpha's inference package and vLLM, including reasoning and tool-calling parsers. Benchmark results and sovereignty claims come from Aleph Alpha, with no independent validation supplied.
+The release targets regulated and sovereign deployments, including government, industrial, and aerospace use cases. Reported benchmark and internal customer-proxy results come from Aleph Alpha and are not independently validated in the supplied evidence.
