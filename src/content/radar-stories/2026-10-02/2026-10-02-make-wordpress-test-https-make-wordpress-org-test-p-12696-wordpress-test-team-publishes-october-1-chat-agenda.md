@@ -9,26 +9,25 @@ section: wordpress
 tags:
   - wordpress-testing
   - core-testing
-  - gutenberg-testing
   - patch-testing
-  - test-team
   - contributor-coordination
-title: WordPress Test Team publishes October 1 chat agenda
+  - test-handbook
+title: WordPress Test Team schedules October 1 voice chat
 url: https://make.wordpress.org/test/2026/10/01/test-team-chat-agenda-1st-october-2026
-why_read: The agenda gives WordPress contributors a concrete view of current testing work, participation opportunities, and pending coordination tasks.
-status: in_progress
+why_read: WordPress contributors can identify current testing priorities, documentation work, and opportunities to participate in coordination.
+status: proposed
 source_published_at: 2026-10-01T07:35:43.000Z
 source_external_id: https://make.wordpress.org/test/?p=12696
 source_adapter: rss
-interest_score: 5
-utility_score: 5
+interest_score: 4
+utility_score: 4
 novelty_score: 2
 depth_score: 3
 impact_score: 4
 ---
 
-The WordPress Test Team published an agenda for a voice chat scheduled for October 1 at 18:00 GMT+3 in the #core-test Slack channel. The meeting covers team coordination, contributor participation, and open testing work.
+The WordPress Test Team published an agenda for a voice chat scheduled for October 1, 2026. Topics included Contributor Toolkit documentation, handbook pull requests, the contributor getting-started guide, Test Team representative duties, and issues needing testing.
 
-Planned discussions include documenting the WordPress Contributor Toolkit for bug reproduction and patch testing, reviewing handbook pull requests, updating the Contributor Day guide, and revising Test Team representative duties. The agenda also identifies WordPress 7.1.1 and Gutenberg issues needing testing.
+A related summary reports that participants favored a dedicated documentation page for the Contributor Toolkit and that a team-wide poll was planned before creating it. The discussion also covered pull requests and post-review workflow limitations.
 
-The document seeks volunteers for the next session’s facilitator and note-taker roles. It records planned work and discussion topics, but supplies no meeting outcomes, implementation results, or testing measurements.
+The material is primarily coordination-focused. It identifies participation opportunities and testing priorities, but supplies no implementation details, test results, or detailed testing procedures.
