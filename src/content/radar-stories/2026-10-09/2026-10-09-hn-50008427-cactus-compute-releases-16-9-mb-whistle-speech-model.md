@@ -10,12 +10,12 @@ tags:
   - speech-recognition
   - on-device-inference
   - speech-embeddings
-  - keyword-biasing
-  - edge-ai
-  - multilingual-transcription
-title: Cactus Compute releases 16.9 MB Whistle speech model
+  - word-timestamps
+  - beam-search
+  - cactus-needle
+title: Cactus-Compute releases Whistle, a 16.9 MB on-device speech model
 url: https://cactuscompute.com/blog/whistle
-why_read: Engineers can evaluate a compact multilingual speech stack with documented CPU performance, deployment targets, APIs, and integrated embeddings.
+why_read: Engineers can evaluate a compact local speech stack with configurable decoding, multilingual input, embeddings, and documented deployment targets.
 status: released
 source_published_at: 2026-10-08T16:59:39.000Z
 hn_id: "50008427"
@@ -23,12 +23,12 @@ comments: https://news.ycombinator.com/item?id=50008427
 interest_score: 9
 utility_score: 9
 novelty_score: 8
-depth_score: 9
+depth_score: 10
 impact_score: 8
 ---
 
-Cactus Compute has released Whistle, a 16.9 MB multilingual speech model designed for CPU inference on mobiles, wearables, robots, automotive systems, browsers, and microcontrollers. It loads in the Needle C++ engine without dependencies.
+Cactus-Compute has released Whistle, a 16.9 MB speech recognition model designed for local CPU inference. It supports English, German, French, Spanish, Italian, Dutch, and Polish transcription, plus word timestamps and speech embeddings.
 
-Whistle transcribes up to 30 seconds of audio in seven languages, detects language, returns word timestamps, and exposes speech embeddings. Its encoder uses eight attention blocks; a selectable-depth decoder adds gated cross-attention, five-beam decoding, keyword biasing, and silence handling.
+The model processes 16 kHz mono audio through an eight-block encoder and a configurable-depth decoder. Gated cross-attention connects the decoder to encoded audio, while five-beam decoding and keyword biasing support transcript generation. Whistle loads in the same C++ engine as Needle.
 
-Cactus Compute reports 11.1 ms time to first token and 1,319 decoded tokens per second on an Apple M4 Pro CPU. The comparisons use heterogeneous published baselines and are not independently replicated in the supplied evidence.
+Cactus-Compute reports comparisons with Whisper base and Moonshine tiny v2 for size, latency, decoding speed, and word error rates. The supplied comparison notes missing benchmarks and differing AMI subsets.
