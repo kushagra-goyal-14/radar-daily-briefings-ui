@@ -12,22 +12,23 @@ tags:
   - runtime-sunset
   - deno-deploy-shutdown
   - migration-support
-title: Cloudflare acquires Deno and plans runtime sunset
+  - durable-objects
+title: Cloudflare acquires Deno and announces runtime sunset
 url: https://deno.com/blog/cloudflare
-why_read: Deno users need the announced support timelines and platform-transition details to plan runtime, hosting, and infrastructure decisions.
+why_read: Deno users need the announced support windows and migration implications for runtime, hosting, and open-source maintenance decisions.
 status: in_progress
 source_published_at: 2026-10-09T13:03:48.000Z
 hn_id: "50019911"
 comments: https://news.ycombinator.com/item?id=50019911
-interest_score: 9
+interest_score: 8
 utility_score: 8
 novelty_score: 2
-depth_score: 7
-impact_score: 9
+depth_score: 5
+impact_score: 8
 ---
 
-Deno says its entire team is joining Cloudflare, and that future development will focus on a shared platform combining its work with Cloudflare Workers and Durable Objects. The announcement describes this as a consequential change for Deno users.
+Deno says its entire team is joining Cloudflare, shifting future development toward a shared platform built around Cloudflare Workers and Durable Objects. The announcement describes this as a move away from maintaining a separate runtime and hosting service.
 
-Deno will receive monthly bug-fix and security releases for another year, after which runtime development will end. Deno Deploy will operate for six months before shutting down, while JSR continues with infrastructure moving to Cloudflare. Cloudflare will provide migration support for paying Deploy customers moving to Workers.
+Deno will receive monthly bug-fix and security releases for another year, after which runtime development will end. Deno Deploy will operate for six months before shutting down, while JSR continues with infrastructure moving to Cloudflare.
 
-The announcement also says Deno will remain open source and that rusty_v8 support will continue, with work toward integrating it into workerd. It does not provide acquisition terms or a detailed post-sunset community plan.
+The change gives Deno users explicit lifecycle windows for planning migrations. Cloudflare says paying Deno Deploy customers will receive migration support for Cloudflare Workers, but the announcement does not provide detailed compatibility or migration procedures.
