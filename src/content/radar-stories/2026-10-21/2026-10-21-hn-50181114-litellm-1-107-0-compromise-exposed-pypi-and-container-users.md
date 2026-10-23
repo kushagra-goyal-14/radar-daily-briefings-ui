@@ -7,28 +7,28 @@ generated_at: 2026-10-22T12:19:31.017Z
 source: hn
 section: security
 tags:
-  - supply-chain-compromise
-  - credential-stealer
-  - backdoor
   - pypi-malware
-  - python-startup-hooks
-  - container-images
-title: LiteLLM 1.107.0 compromise exposed PyPI and container users
+  - supply-chain-attack
+  - credential-stealing
+  - python-packages
+  - backdoor
+  - incident-response
+title: Compromised LiteLLM 1.107.0 package installs credential stealer and backdoor
 url: https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor
-why_read: Engineers can identify affected artifacts, startup-hook indicators, stolen credential classes, and containment priorities for potentially infected hosts.
+why_read: Operators can identify affected artifacts, inspect indicators of compromise, and prioritize credential rotation and incident response.
 status: fixed
 source_published_at: 2026-10-21T14:00:26.000Z
 hn_id: "50181114"
 comments: https://news.ycombinator.com/item?id=50181114
 interest_score: 10
 utility_score: 10
-novelty_score: 9
+novelty_score: 8
 depth_score: 10
 impact_score: 9
 ---
 
-SafeDep reports that LiteLLM 1.107.0 was compromised and that its PyPI wheels installed a credential stealer and remote-code-execution backdoor. LiteLLM confirmed the incident, and PyPI removed the release; affected Docker tags were later removed or repointed.
+SafeDep reports that LiteLLM 1.107.0 was compromised on PyPI. Its seven wheels installed a credential stealer and remote-code-execution backdoor, and matching Docker images were published. PyPI removed the release, while affected container tags were removed or repointed to clean images.
 
-The malicious release added Python startup hooks: cook.pth imported a stealer in every Python process, while sitecustomize.py launched a detached daemon that periodically fetched and executed code. The stealer targeted SSH, cloud, CI/CD, browser, AI-tool, and LiteLLM proxy credentials.
+The implant used a .pth file to run during Python startup and collected credentials from developer hosts, CI systems, cloud environments, browsers, and LiteLLM databases. A sitecustomize.py daemon periodically fetched and executed code from an attacker-controlled domain.
 
-Operators should investigate the listed files, hashes, network indicators, and affected image digest. Clean versions identified in the evidence include 1.106.2 and the 1.107.0 release candidates; the supplied material does not quantify affected installations.
+Operators should investigate the listed files, hashes, network indicators, and container digest, then follow LiteLLM's remediation guidance. The report does not establish whether stolen data or second-stage code was used.
