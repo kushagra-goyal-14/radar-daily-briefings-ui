@@ -8,13 +8,13 @@ section: ai
 tags:
   - kimi-k3-1-pro
   - large-language-model
-  - llm-api
-  - openai-compatible-api
-  - model-pricing
+  - reasoning-model
   - open-weights
-title: Moonshot releases Kimi K3.1 Pro through its API
+  - llm-pricing
+  - openai-compatible-api
+title: Moonshot releases Kimi K3.1 Pro and Highspeed
 url: https://simonwillison.net/2026/Oct/23/kimi-k31-pro
-why_read: Engineers can evaluate API compatibility, reasoning controls, speed-price tradeoffs, and the planned transition to open weights.
+why_read: Engineers evaluating reasoning models can compare Kimi’s API access, pricing, speed tier, and planned open-weight availability.
 status: released
 source_published_at: 2026-10-23T19:40:54.000Z
 source_external_id: https://simonwillison.net/2026/Oct/23/kimi-k31-pro/
@@ -29,8 +29,8 @@ depth_score: 5
 impact_score: 7
 ---
 
-Moonshot has released Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed through Kimi services and the Kimi API. The official announcement describes K3.1 Pro as a 3T-class open-weight model, while full weights are planned by November 4, 2026.
+Moonshot has released Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed through the Kimi API and other listed services. The release is presented as part of the K3.1 model series, with full model weights planned by November 4, 2026.
 
-Moonshot says Highspeed provides two- to three-times the speed. The supplied report also identifies low, medium, and maximum reasoning settings, OpenAI-compatible endpoint access, and pricing of $2 per million input tokens and $10 per million output tokens.
+Moonshot says Highspeed provides 2–3× the speed of K3.1 Pro. The primary document reports API pricing of $2 per million input tokens and $10 per million output tokens, plus low, medium, and max reasoning levels and OpenAI-compatible endpoint access.
 
-These details support evaluation of model routing and integration costs. Benchmark and performance claims remain vendor-reported or summarized from external evaluations, without reproducible methodology in the supplied evidence.
+Engineers can use these details to evaluate provider and model choices. Benchmark comparisons in the supplied material are company-reported or summarized without independent methodology.
