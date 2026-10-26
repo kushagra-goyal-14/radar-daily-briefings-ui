@@ -7,14 +7,14 @@ source: simon-willison
 section: ai
 tags:
   - kimi-k3-1-pro
-  - large-language-model
-  - reasoning-model
+  - large-language-models
   - open-weights
   - llm-pricing
   - openai-compatible-api
-title: Moonshot releases Kimi K3.1 Pro and Highspeed
+  - model-benchmarks
+title: Moonshot releases Kimi K3.1 Pro through its API
 url: https://simonwillison.net/2026/Oct/23/kimi-k31-pro
-why_read: Engineers evaluating reasoning models can compare Kimi’s API access, pricing, speed tier, and planned open-weight availability.
+why_read: Engineers can evaluate API access, OpenAI-compatible integration, pricing, speed tradeoffs, and the planned transition to open weights.
 status: released
 source_published_at: 2026-10-23T19:40:54.000Z
 source_external_id: https://simonwillison.net/2026/Oct/23/kimi-k31-pro/
@@ -23,14 +23,14 @@ discussions:
   - source: hacker-news
     url: https://news.ycombinator.com/item?id=50212065
 interest_score: 8
-utility_score: 7
+utility_score: 6
 novelty_score: 7
 depth_score: 5
 impact_score: 7
 ---
 
-Moonshot has released Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed through the Kimi API and other listed services. The release is presented as part of the K3.1 model series, with full model weights planned by November 4, 2026.
+Moonshot has released Kimi K3.1 Pro through the Kimi API, with access also reported through Kimi.ai, Kimi Work, and Kimi Code. A Highspeed variant is available alongside it, while full model weights are scheduled for release by November 4, 2026.
 
-Moonshot says Highspeed provides 2–3× the speed of K3.1 Pro. The primary document reports API pricing of $2 per million input tokens and $10 per million output tokens, plus low, medium, and max reasoning levels and OpenAI-compatible endpoint access.
+Moonshot describes Highspeed as two to three times faster than K3.1 Pro. The primary report lists Kimi K3.1 Pro at $2 per million input tokens and $10 per million output tokens, and notes compatibility with an OpenAI-style endpoint.
 
-Engineers can use these details to evaluate provider and model choices. Benchmark comparisons in the supplied material are company-reported or summarized without independent methodology.
+The supplied material reports strong comparative benchmark results and an Artificial Analysis score, but provides no independent methodology. Engineers should validate quality, latency, and cost for their workloads.
