@@ -11,24 +11,24 @@ tags:
   - site-health
   - security-monitoring
   - performance-monitoring
+  - public-api
   - mcp-integration
-  - woocommerce-monitoring
-title: Scanfully 2.0 expands WordPress site health monitoring
+title: Scanfully 2.0 adds unified WordPress monitoring and conversational queries
 url: https://wptavern.com/podcast/239-remkus-de-vries-on-how-scanfully-2-0-is-making-wordpress-security-and-performance-monitoring-simpler
-why_read: WordPress operators can assess Scanfully’s consolidated monitoring workflow and distinguish available features from roadmap items.
+why_read: The update shows how Scanfully organizes cross-site health signals and alerts while distinguishing available features from roadmap items.
 status: released
 source_published_at: 2026-10-28T14:00:00.000Z
 source_external_id: https://wptavern.com/?post_type=podcast&#038;p=209252
 source_adapter: rss
-interest_score: 6
+interest_score: 7
 utility_score: 6
 novelty_score: 5
-depth_score: 4
+depth_score: 5
 impact_score: 5
 ---
 
-Scanfully co-founder Remkus De Vries describes version 2.0 as a redesign of the WordPress monitoring product’s dashboard. The service consolidates information about site health, security, performance, email deliverability, DNS, and related operational signals.
+WP Tavern’s podcast discusses Scanfully 2.0, a released update to a WordPress site-health monitoring service co-founded by Remkus de Vries. The service covers security, performance, email deliverability, DNS, uptime, and other site-health signals.
 
-According to De Vries, the update changes how collected metrics and alerts are presented, including grouping related alerts across multiple sites and allowing users to snooze selected alerts. Scanfully also adds public APIs and MCP integration for conversational site-health queries.
+According to the discussion, version 2.0 reworks the dashboard, consolidates related alerts across sites, adds public APIs, and introduces MCP integration for conversational queries. WooCommerce checkout monitoring is being released, while broader form journeys remain planned.
 
-WooCommerce checkout monitoring is being introduced, while broader forms and custom journey monitoring remain planned. The interview provides feature descriptions but no independent benchmarks or detailed architecture.
+The update is relevant to agencies managing multiple WordPress sites, but the supplied evidence includes no architecture details, benchmarks, operational measurements, or independent assessment of the product’s monitoring accuracy.

@@ -13,9 +13,9 @@ tags:
   - interactivity-api
   - security-backports
   - upgrade-process
-title: WordPress 7.1.4 fixes 22 vulnerabilities across 17 advisories
+title: WordPress 7.1.4 fixes 22 vulnerabilities across supported branches
 url: https://patchstack.com/articles/wordpress-7-1-4-security-release
-why_read: Operators can identify the fixed versions, address upgrade-directory exposure, and review contributor permissions affecting several vulnerabilities.
+why_read: Operators can identify affected upgrade paths, apply 7.1.4 or backports, and restrict web access to the upgrade directory.
 status: released
 source_published_at: 2026-10-28T18:34:56.000Z
 source_external_id: https://patchstack.com/articles/wordpress-7-1-4-security-release/
@@ -27,8 +27,8 @@ depth_score: 9
 impact_score: 8
 ---
 
-WordPress 7.1.4 was released on October 28, 2026, with fixes for 22 vulnerabilities across 17 advisories. The official WordPress announcement says the release is available through WordPress.org, the dashboard, and automatic background updates, with backports for supported branches.
+WordPress 7.1.4 was released on October 28, 2026, fixing 22 vulnerabilities across 17 advisories. The release includes security backports for supported branches down to 4.7.39.
 
-Patchstack reports that the most severe issue is a race condition in the upgrade process that can enable unauthenticated remote code execution while an update is running. The release randomizes the extraction directory, restores index.php, and avoids copying wp-config.php into the working directory.
+The most serious issue is a race condition in the core upgrade process. During an update, a predictable and browsable extraction path could expose setup-config.php; 7.1.4 randomizes the directory name, restores index.php, and excludes wp-config.php from copied files. The release also addresses seven Interactivity API advisories and several Customizer, block, parsing, and permissions issues.
 
-The update also addresses seven Interactivity API advisories, stored XSS issues, Customizer flaws, block-processing bugs, and a notes-permission problem. Operators should verify their version, restrict access to wp-content/upgrade/, and review affected contributor capabilities.
+Operators should update promptly and verify that wp-content/upgrade/ is not web-browsable. WordPress 4.6 and older receive no listed backport.
