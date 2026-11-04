@@ -11,24 +11,24 @@ tags:
   - remote-code-execution
   - stored-xss
   - interactivity-api
-  - security-backports
+  - security-backport
   - upgrade-process
 title: WordPress 7.1.4 fixes 22 vulnerabilities across supported branches
 url: https://patchstack.com/articles/wordpress-7-1-4-security-release
-why_read: Operators can identify affected upgrade paths, apply 7.1.4 or backports, and restrict web access to the upgrade directory.
-status: released
+why_read: Operators can prioritize the update, restrict upgrade-directory exposure, and review contributor-level access involved in most fixes.
+status: fixed
 source_published_at: 2026-10-28T18:34:56.000Z
 source_external_id: https://patchstack.com/articles/wordpress-7-1-4-security-release/
 source_adapter: rss
 interest_score: 9
 utility_score: 9
-novelty_score: 8
+novelty_score: 6
 depth_score: 9
 impact_score: 8
 ---
 
-WordPress 7.1.4 was released on October 28, 2026, fixing 22 vulnerabilities across 17 advisories. The release includes security backports for supported branches down to 4.7.39.
+WordPress 7.1.4 was released on October 28, 2026, fixing 22 vulnerabilities across 17 advisories. The release includes an unauthenticated race condition in the core upgrade process that can lead to remote code execution during the brief update window.
 
-The most serious issue is a race condition in the core upgrade process. During an update, a predictable and browsable extraction path could expose setup-config.php; 7.1.4 randomizes the directory name, restores index.php, and excludes wp-config.php from copied files. The release also addresses seven Interactivity API advisories and several Customizer, block, parsing, and permissions issues.
+The fix randomizes the upgrade directory, restores its index.php protection, and prevents wp-config.php from being copied into the extracted working directory. Other changes address Interactivity API bindings, Customizer behavior, block parsing, notes permissions, and stored XSS paths.
 
-Operators should update promptly and verify that wp-content/upgrade/ is not web-browsable. WordPress 4.6 and older receive no listed backport.
+Patchstack reports backports through 4.7.39 and recommends checking upgrade-directory exposure. The supplied WordPress summary describes backports as shipping progressively, so operators should verify their branch version directly.

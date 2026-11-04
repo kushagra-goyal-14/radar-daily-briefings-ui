@@ -8,13 +8,14 @@ source: hn
 section: ai
 tags:
   - weight-space-programming
-  - neural-network-weights
+  - model-weight-editing
+  - model-interpretability
   - gradient-free-optimization
-  - model-editing
+  - qwen
   - llm-evaluation
-title: Astra demonstrates gradient-free neural-network weight programming
+title: Astra post reports gradient-free neural weight programming
 url: https://rikiyat.github.io/blog/weight-space-programming
-why_read: The work gives model engineers concrete experiments for evaluating direct weight editing while exposing substantial reproducibility and scaling limits.
+why_read: The reported workflow offers engineers a concrete, artifact-backed basis for evaluating direct weight inspection and editing beyond conventional training loops.
 status: released
 source_published_at: 2026-11-02T18:21:28.000Z
 hn_id: "50341174"
@@ -26,8 +27,8 @@ depth_score: 8
 impact_score: 7
 ---
 
-The authors report that GPT-6 Astra can read and write neural-network weights directly around natural-language goals, without gradient descent. The article presents this as “Weight-Space Programming” and releases logs and evaluation artifacts.
+An MIT CSAIL-authored post introduces “Weight-Space Programming,” in which GPT-6 Astra reads and writes neural-network weights directly from natural-language goals, without gradient descent. The post presents this as an early research result and releases logs and related artifacts.
 
-Across experiments, Astra inferred behaviors from raw or intermediate weights, wrote small game-playing networks, repaired a failing controller, and edited Qwen3.5-0.8B. The reported Qwen edit changed 0.016% of weights and raised MATH-500 from 7.9% to 48.1% under the stated settings.
+Reported experiments span behavior identification, control-policy repair, zero-shot game-network construction, and edits to Qwen3.5-0.8B. In the Qwen experiment, Astra changed 0.016% of the weights and the reported MATH-500 score increased from 7.9% to 48.1%, with an accompanying IFEval improvement.
 
-The work is released as an early research report, not established deployment guidance. The authors identify context-length and harness inefficiencies, while the supplied evidence lacks independent replication.
+The evidence is promising but specialized. The authors say the workflow remains limited by context length and harness design, and the supplied material does not establish independent reproducibility.

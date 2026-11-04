@@ -12,23 +12,23 @@ tags:
   - smart-glasses
   - foundation-models
   - cross-user-generalization
-  - preorders
+  - cloud-inference
 title: Subvocal proposes RF smart glasses for silent speech input
 url: https://news.ycombinator.com/item?id=50340088
-why_read: Engineers can assess the sensing architecture, cross-user data requirements, latency, and unresolved privacy tradeoffs of an emerging input device.
+why_read: Engineers can assess the sensing architecture, cross-user training strategy, cloud dependency, and unresolved readiness constraints of a novel input device.
 status: proposed
 source_published_at: 2026-11-02T17:16:17.000Z
 hn_id: "50340088"
 comments: https://news.ycombinator.com/item?id=50340088
 interest_score: 8
-utility_score: 6
+utility_score: 5
 novelty_score: 8
-depth_score: 8
+depth_score: 7
 impact_score: 6
 ---
 
-The Subvocal Company is developing smart glasses that convert silent mouthing into text. The project is still proposed and under development, although the company is accepting preorders for 500 initial units and plans to ship in Q1 2027.
+The Subvocal Company is developing smart glasses intended to convert silently mouthed speech into text. The project remains proposed and under development, with preorders open for an initial 500 units and shipping targeted for Q1 2027.
 
-The glasses use embedded RF antennas to sense changes caused by the tongue, lips, and soft palate. The company says foundation models decode those signals, while expanded pretraining data addresses differences in facial anatomy between users. Initial decoding runs through a companion app and cloud processing, with typical latency reported as under 500 milliseconds.
+According to the company, embedded antennas emit RF signals through the face; movement of the tongue, lips, and soft palate modulates those signals. Foundation models trained on expanded, multi-user datasets decode the perturbations. The team moved from EMG electrodes to RF sensing because of placement and signal problems.
 
-Engineers should treat the reported performance and schedule as company claims. Local inference is planned only as future research, leaving privacy and connectivity tradeoffs material for evaluation.
+Decoding currently uses a companion laptop or phone app with cloud inference, and the company reports typical latency below 500 milliseconds. Local inference is not yet available, while performance and safety claims lack independent validation.
