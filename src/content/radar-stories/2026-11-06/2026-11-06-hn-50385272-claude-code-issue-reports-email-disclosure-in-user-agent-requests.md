@@ -13,9 +13,9 @@ tags:
   - privacy-mod
   - macos
   - web-search
-title: Claude Code issue reports email disclosure in web requests
+title: Claude Code issue alleges email disclosure through User-Agent headers
 url: https://github.com/anthropics/claude-code/issues/107757
-why_read: Engineers can assess potential email exposure, affected request paths, and the reported limits of Claude Code’s built-in mitigation.
+why_read: Engineers can assess the reported disclosure path, mitigation coverage, and unresolved gap between documented protections and observed behavior.
 status: unknown
 source_published_at: 2026-11-05T22:17:15.000Z
 hn_id: "50385272"
@@ -27,8 +27,8 @@ depth_score: 6
 impact_score: 7
 ---
 
-An open Claude Code issue reports that a signed-in account email address appeared in User-Agent request headers while the tool conducted web searches. The report identifies macOS and version 2.1.318, but does not establish the issue’s full scope.
+An open Claude Code issue alleges that the tool can place a signed-in user’s email address in a User-Agent header while conducting web searches or running curl-style commands. The report concerns macOS and version 2.1.318.
 
-An Anthropic contributor says versions 2.1.317 and later include an enabled-by-default `cc-plugin-privacy` mod that prompts before certain web-tool or curl-style calls containing the email. A follow-up says tested desktop and terminal cases still ran.
+A contributor says versions 2.1.317 and later include the built-in cc-plugin-privacy mod, enabled by default and configurable through `/plugins`. However, another user reports that documented test inputs were not refused in desktop and terminal runs, despite the mod appearing enabled.
 
-Engineers should treat the issue as unresolved evidence about privacy enforcement, not a confirmed advisory. The supplied material lacks independent network validation and notes that the quoted future-release statement may not be from an authorized employee.
+A comment attributed to an Anthropic employee says the email will be removed from the model context in a forthcoming release. The supplied evidence does not establish release status, broader scope, or independent reproduction.
