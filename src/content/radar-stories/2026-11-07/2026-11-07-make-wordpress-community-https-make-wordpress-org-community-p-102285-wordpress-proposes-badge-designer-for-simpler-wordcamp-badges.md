@@ -9,26 +9,26 @@ section: wordpress
 tags:
   - wordpress
   - wordcamp
-  - badge-designer
-  - camptix
-  - pdf-generation
+  - badge-generation
   - visual-editor
-title: WordPress proposes Badge Designer for simpler WordCamp badges
+  - camptix
+  - print-ready-pdf
+title: WordPress proposes Badge Designer for WordCamp badge creation
 url: https://make.wordpress.org/community/2026/11/06/call-for-testing-badge-designer-a-simpler-way-to-make-wordcamp-badges
-why_read: WordCamp organizers can evaluate a simpler badge workflow while contributors assess its proposed path into CampTix.
-status: proposed
+why_read: WordCamp organizers can evaluate a simpler badge workflow with visual checks, attendee fields, QR codes, and browser-generated PDFs.
+status: experimental
 source_published_at: 2026-11-06T22:47:36.000Z
 source_external_id: https://make.wordpress.org/community/?p=102285
 source_adapter: rss
 interest_score: 6
 utility_score: 7
 novelty_score: 7
-depth_score: 6
-impact_score: 5
+depth_score: 5
+impact_score: 6
 ---
 
-The WordPress community has proposed Badge Designer and is inviting testing through November 20, 2026. The tool is currently a standalone plugin intended to simplify WordCamp badge creation.
+A WordPress community proposal introduces Badge Designer, a visual editor intended to simplify WordCamp badge creation. The standalone plugin is ready for testing, while integration into CampTix is planned after evaluation.
 
-Organizers can upload badge artwork, place attendee names and other fields, add Gravatars and QR codes, review badges with fit warnings, and export a print-ready PDF with bleed and crop marks. The PDF is generated in the organizer’s browser.
+Organizers can upload badge artwork, place attendee names and WordPress.org usernames, add Gravatars, QR codes, and ticket-question answers, and review warnings for text that does not fit. The browser generates one print-ready PDF with bleed and crop marks.
 
-After testing, the proposal plans to integrate the tool into CampTix Badge Generator while retaining HTML/CSS and InDesign as alternatives. That integration remains planned, so the current evidence supports evaluation rather than broad availability.
+A WordPress Playground demo includes 140 test attendees. The proposed CampTix integration has not occurred, so the document describes an experimental workflow rather than an established WordCamp-wide capability.
